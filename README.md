@@ -14,7 +14,9 @@ Use the package manager npm to install dependencies.
 npm i
 ```
 
-## How to run
+## Guide
+
+Create a .env file to set environment variables, refer to .env.example.
 
 To run it locally, use
 
@@ -22,22 +24,15 @@ To run it locally, use
 npm run start
 ```
 
-To run the unit tests, use
-
-```bash
-npm run test
-```
-
-To build and run with docker, use
-
+To run using docker (assuming SERVER_PORT set to 80), use
 ```bash
 docker build -t test-server .
-docker run --rm -p 80:80 test-server
+docker run --rm -p 80:80 --env-file .env test-server
 ```
 
 ## Usage
 
-Assume the server is running at localhost:80
+[API Doc](https://chaos-theory-take-home-task-thomasli.azurewebsites.net/api)
 
 ```bash
 # returns btc-usd pair at given timestamp
@@ -52,6 +47,12 @@ curl -X GET "https://chaos-theory-take-home-task-thomasli.azurewebsites.net/api/
 curl -X GET "https://chaos-theory-take-home-task-thomasli.azurewebsites.net/api/exchange-rates/average?startTimestamp=2022-04-03T22:33:58&endTimstamp=2022-04-03T22:35:00"
 ```
 
-## Public Access
+## Public Endpoints
+The endpoints are hosted on https://chaos-theory-take-home-task-thomasli.azurewebsites.net/api
 
-The server and api doc is publicly hosted on https://chaos-theory-take-home-task-thomasli.azurewebsites.net/api.
+## Unit Test
+
+To run the unit tests, use
+```bash
+npm run test
+```
